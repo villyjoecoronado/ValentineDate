@@ -26,7 +26,7 @@
       align-items: center;
       text-align: center;
       background-image: url("kate1.jpg"), url("kate2.jpg");
-      background-size: 30vw auto, 30vw auto;
+      background-size: 40vw auto, 40vw auto; /* palakihin ng konti */
       background-position: left 15% top 20%, right 15% top 20%;
       background-repeat: no-repeat, no-repeat;
       background-color: #ffe6eb;
@@ -120,7 +120,7 @@
 
       question.textContent = messages[noClicks % messages.length];
 
-      yesSize += 1;
+      yesSize += 1; // increase YES button font size slightly
       yesBtn.style.fontSize = yesSize + "vw";
 
       noClicks++;
