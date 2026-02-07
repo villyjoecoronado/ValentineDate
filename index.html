@@ -15,7 +15,7 @@
       padding: 0;
       height: 100%;
       width: 100%;
-      overflow: hidden; /* prevents scrollbars */
+      overflow: hidden;
     }
 
     body {
@@ -26,10 +26,25 @@
       align-items: center;
       text-align: center;
       background-image: url("kate1.jpg"), url("kate2.jpg");
-      background-size: 60vw auto, 60vw auto; /* palakihin ng 50% */
+      background-size: 60vw auto, 60vw auto; /* default size for larger screens */
       background-position: left 15% top 20%, right 15% top 20%;
       background-repeat: no-repeat, no-repeat;
       background-color: #ffe6eb;
+    }
+
+    /* Mobile responsive */
+    @media screen and (max-width: 600px) {
+      body {
+        background-size: 90vw auto, 90vw auto; /* palaki sa cellphone */
+        background-position: left 5% top 10%, right 5% top 10%;
+      }
+      h1 {
+        font-size: 8vw;
+      }
+      button {
+        font-size: 5vw;
+        padding: 3vw 5vw;
+      }
     }
 
     h1 {
