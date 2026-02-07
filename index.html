@@ -105,8 +105,8 @@
       const currentX = noBtn.offsetLeft;
       const currentY = noBtn.offsetTop;
 
-      // Max distance to move
-      const maxMove = 80; // pixels
+      // Max distance to move (small for subtle movement)
+      const maxMove = 20; // konting layo lang
 
       // Random direction within maxMove
       let deltaX = (Math.random() * 2 - 1) * maxMove;
@@ -116,6 +116,7 @@
       let newX = currentX + deltaX;
       let newY = currentY + deltaY;
 
+      // Limit to screen bounds
       newX = Math.max(10, Math.min(window.innerWidth - btnWidth - 10, newX));
       newY = Math.max(10, Math.min(window.innerHeight - btnHeight - 10, newY));
 
