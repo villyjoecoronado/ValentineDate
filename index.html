@@ -101,12 +101,26 @@
       const btnWidth = noBtn.offsetWidth;
       const btnHeight = noBtn.offsetHeight;
 
-      // random position but always visible
-      const x = Math.random() * (window.innerWidth - btnWidth - 10);
-      const y = Math.random() * (window.innerHeight - btnHeight - 10);
+      // Current position
+      const currentX = noBtn.offsetLeft;
+      const currentY = noBtn.offsetTop;
 
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
+      // Max distance to move
+      const maxMove = 80; // pixels
+
+      // Random direction within maxMove
+      let deltaX = (Math.random() * 2 - 1) * maxMove;
+      let deltaY = (Math.random() * 2 - 1) * maxMove;
+
+      // New position but stay visible
+      let newX = currentX + deltaX;
+      let newY = currentY + deltaY;
+
+      newX = Math.max(10, Math.min(window.innerWidth - btnWidth - 10, newX));
+      newY = Math.max(10, Math.min(window.innerHeight - btnHeight - 10, newY));
+
+      noBtn.style.left = newX + "px";
+      noBtn.style.top = newY + "px";
 
       question.textContent = messages[noClicks % messages.length];
 
