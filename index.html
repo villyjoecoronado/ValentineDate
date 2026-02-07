@@ -15,7 +15,7 @@
       padding: 0;
       height: 100%;
       width: 100%;
-      overflow: hidden;
+      overflow: hidden; /* prevents scrollbars */
     }
 
     body {
@@ -96,20 +96,22 @@
 
     let noClicks = 0;
     let yesSize = 4.5; // vw
-    const moveDistance = 80; // max distance per click
 
     noBtn.addEventListener("click", () => {
       const btnWidth = noBtn.offsetWidth;
       const btnHeight = noBtn.offsetHeight;
 
-      // Random move in any direction but limited distance
-      const deltaX = (Math.random() * 2 - 1) * moveDistance;
-      const deltaY = (Math.random() * 2 - 1) * moveDistance;
+      // Relative movement based on screen size (5% of width/height)
+      const maxMoveX = window.innerWidth * 0.05;
+      const maxMoveY = window.innerHeight * 0.05;
+
+      const deltaX = (Math.random() * 2 - 1) * maxMoveX;
+      const deltaY = (Math.random() * 2 - 1) * maxMoveY;
 
       let newX = noBtn.offsetLeft + deltaX;
       let newY = noBtn.offsetTop + deltaY;
 
-      // Ensure the button stays visible on screen
+      // Ensure the button stays fully visible on screen
       newX = Math.max(10, Math.min(window.innerWidth - btnWidth - 10, newX));
       newY = Math.max(10, Math.min(window.innerHeight - btnHeight - 10, newY));
 
@@ -118,7 +120,7 @@
 
       question.textContent = messages[noClicks % messages.length];
 
-      yesSize += 1; // increase YES button font size slightly
+      yesSize += 1;
       yesBtn.style.fontSize = yesSize + "vw";
 
       noClicks++;
